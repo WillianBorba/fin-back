@@ -5,6 +5,7 @@ API backend para organizador de finanças pessoais com suporte para processament
 ## 🚀 Tecnologias
 
 - **Node.js** v22
+- **TypeScript** - Tipagem estática e compilação para JavaScript
 - **Express** - Framework web minimalista
 - **fast-xml-parser** - Parser de XML para JSON
 - **Swagger** - Documentação de API
@@ -32,6 +33,11 @@ npm install
 ### Modo Desenvolvimento (com auto-reload)
 ```bash
 npm run dev
+```
+
+### Build
+```bash
+npm run build
 ```
 
 ### Modo Produção
@@ -63,15 +69,21 @@ http://localhost:3000/api-docs
 fin-back/
 ├── src/
 │   ├── business/           # Lógica de negócio
-│   │   └── order.business.js
+│   │   └── order.business.ts
+│   ├── config/             # Configurações da aplicação
+│   │   └── swagger.ts
+│   ├── model/              # Modelos e contratos de domínio
+│   │   └── store.ts
 │   └── server/             # Configuração do servidor
-│       ├── routes.js       # Centralizador de rotas
+│       ├── routes.ts       # Centralizador de rotas
 │       ├── health/         # Rotas de health check
-│       │   └── health.routes.js
+│       │   └── health.routes.ts
 │       └── order/          # Rotas de pedidos/NFe
-│           └── order.routes.js
-├── index.js                # Entry point da aplicação
+│           └── order.routes.ts
+├── dist/                   # Saída compilada do TypeScript
+├── index.ts                # Entry point da aplicação
 ├── package.json
+├── tsconfig.json
 └── README.md
 ```
 
@@ -114,8 +126,9 @@ A API é capaz de processar arquivos XML de NFe e extrair informações relevant
 
 ## 🛠️ Scripts Disponíveis
 
-- `npm start` - Inicia o servidor em modo produção
-- `npm run dev` - Inicia o servidor com nodemon (auto-reload)
+- `npm run build` - Compila o projeto TypeScript para `dist`
+- `npm start` - Inicia o servidor compilado em modo produção
+- `npm run dev` - Inicia o servidor com reload automático usando `tsx`
 
 ## 🌐 Variáveis de Ambiente
 

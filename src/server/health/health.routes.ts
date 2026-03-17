@@ -1,17 +1,17 @@
-import express from 'express';
+import { Router } from 'express';
 
-const router = express.Router();
+const router = Router();
 
 /**
  * @swagger
  * /health:
  *   get:
  *     summary: Verifica o status da API
- *     description: Retorna o status de saúde da aplicação
+ *     description: Retorna o status de saude da aplicacao
  *     tags: [Health]
  *     responses:
  *       200:
- *         description: API está funcionando corretamente
+ *         description: API esta funcionando corretamente
  *         content:
  *           application/json:
  *             schema:
@@ -21,7 +21,7 @@ const router = express.Router();
  *                   type: string
  *                   example: healthy
  */
-router.get('', (req, res) => {
+router.get('', (_req, res) => {
   res.json({ status: 'healthy' });
 });
 

@@ -1,13 +1,15 @@
+import path from 'node:path';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import type { Options } from 'swagger-jsdoc';
 
-const options = {
+const options: Options = {
   definition: {
     openapi: '3.0.0',
     info: {
       title: 'Fin-Back API',
       version: '1.0.0',
-      description: 'API para organizador de finanças pessoais com processamento de NFe',
+      description: 'API para organizador de financas pessoais com processamento de NFe',
       contact: {
         name: 'Willian',
         email: 'contato@example.com'
@@ -24,13 +26,13 @@ const options = {
       },
       {
         url: 'https://api.production.com',
-        description: 'Servidor de Produção'
+        description: 'Servidor de Producao'
       }
     ],
     tags: [
       {
         name: 'Health',
-        description: 'Endpoints de verificação de saúde da API'
+        description: 'Endpoints de verificacao de saude da API'
       },
       {
         name: 'Order',
@@ -38,9 +40,12 @@ const options = {
       }
     ]
   },
-  apis: ['./src/server/**/*.routes.js'] // Caminho para os arquivos de rotas
+  apis: [
+    path.resolve(process.cwd(), 'src/server/**/*.routes.ts'),
+    path.resolve(process.cwd(), 'dist/src/server/**/*.routes.js')
+  ]
 };
 
 const swaggerSpec = swaggerJsdoc(options);
 
-export { swaggerUi, swaggerSpec };
+export { swaggerSpec, swaggerUi };

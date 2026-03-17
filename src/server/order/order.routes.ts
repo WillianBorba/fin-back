@@ -1,14 +1,14 @@
-import express from 'express';
+import { Router } from 'express';
 import { processNFe } from '../../business/order.business.js';
 
-const router = express.Router();
+const router = Router();
 
 /**
  * @swagger
  * /order/json:
  *   get:
  *     summary: Processa arquivo XML de NFe e retorna JSON
- *     description: Lê um arquivo XML de Nota Fiscal Eletrônica e retorna os dados estruturados em JSON
+ *     description: Le um arquivo XML de Nota Fiscal Eletronica e retorna os dados estruturados em JSON
  *     tags: [Order]
  *     responses:
  *       200:
@@ -108,7 +108,7 @@ const router = express.Router();
  *                   type: string
  *                   example: "Erro ao parsear XML: ..."
  */
-router.get('/json', async (req, res) => {
+router.get('/json', async (_req, res) => {
   const filePath = './NFe35250201937635002983550570006780591052004710.xml';
   const result = await processNFe(filePath);
   res.json(result);
