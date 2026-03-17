@@ -135,7 +135,3 @@ export async function processNFe(filePath) {
     };
   }
 }
-
-export default {
-  processNFe
-};

@@ -1,0 +1,51 @@
+{
+  "info": {
+    "name": "Fin-Back API",
+    "description": "Coleção de requests da API de Organizador de Finanças",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["health"]
+            },
+            "description": "Verifica se a API está funcionando"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "item": [
+        {
+          "name": "Process NFe XML to JSON",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/order/json",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["order", "json"]
+            },
+            "description": "Processa arquivo XML de NFe e retorna JSON estruturado"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
